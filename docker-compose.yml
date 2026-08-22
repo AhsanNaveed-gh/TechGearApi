@@ -1,0 +1,34 @@
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=TechGearDb;Username=postgres;Password=${POSTGRES_PASSWORD}
+      - Jwt__Key=CDlw2ZHbLC958pmpSbQlDmGF3iR3tuY7EpDZwGCDHI2
+    depends_on:
+      - db
+    networks:
+      - techgear-net
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_DB=TechGearDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - techgear-net
+
+volumes:
+  pgdata:
+
+networks:
+  techgear-net:

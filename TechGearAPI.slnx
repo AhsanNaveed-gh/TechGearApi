@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TechGearAPI.csproj" />
+  <Project Path="TechGearAPI.Tests/TechGearAPI.Tests.csproj" />
+</Solution>
