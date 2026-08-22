@@ -7,7 +7,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=TechGearDb;Username=postgres;Password=${POSTGRES_PASSWORD}
-      - Jwt__Key=CDlw2ZHbLC958pmpSbQlDmGF3iR3tuY7EpDZwGCDHI2
+      - Jwt__Key=${JWT_KEY}
     depends_on:
       - db
     networks:
